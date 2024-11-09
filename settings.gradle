@@ -1,0 +1,5 @@
+rootProject.name = 'demo'
+include 'grpc-backend'
+include 'grpc-common'
+include 'grpc-e2e'
+

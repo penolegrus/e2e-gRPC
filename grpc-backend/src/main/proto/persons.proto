@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "threadqa.qa.students.grpc";
+option java_outer_classname = "StudentsProto";
+
+service StudentsService {
+    rpc GetAllStudents (google.protobuf.Empty) returns (GetAllStudentsResponse) {}
+    rpc AddStudent (AddStudentRequest) returns (AddStudentResponse) {}
+    rpc GetStudent (GetStudentRequest) returns (GetStudentResponse) {}
+    rpc GetSubjects(google.protobuf.Empty) returns (GetSubjectsResponse) {}
+    rpc GetSubjectsByYear(GetSubjectsByYearRequest) returns (GetSubjectsByYearResponse) {}
+}
+
+message GetSubjectsByYearRequest {
+    int32 education_year = 1;
+}
+message GetSubjectsByYearResponse {
+    repeated string subject = 1;
+}
+
+message GetSubjectsResponse {
+    repeated Subject subjects = 1;
+}
+
+message Subject {
+    int32 education_year = 1;
+    string subject = 2;
+}
+
+message GetAllStudentsResponse {
+    repeated Student students = 1;
+}
+
+message GetStudentRequest {
+    int32 student_id = 1;
+}
+
+message GetStudentResponse {
+    Student student = 1;
+}
+
+message AddStudentRequest {
+    //нумерация всегда с 1
+    string name = 1;
+    int32 age = 2;
+    bool has_job =3;
+    int32 year = 4;
+}
+
+message AddStudentResponse {
+    int32 student_id = 1;
+}
+
+message Student {
+    int32 id = 1;
+    string name = 2;
+    int32 age = 3;
+   bool has_job = 4;
+    repeated string subjects = 5; //repeated означает массив из объекта
+    int32 year = 6;
+}

@@ -1,0 +1,10 @@
+server:
+  port: 8091
+
+grpc:
+  server:
+    port: 8092
+
+spring:
+  application:
+    name: students-workshop
